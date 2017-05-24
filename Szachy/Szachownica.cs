@@ -72,6 +72,11 @@ namespace Szachy
             return null;
         }
 
+        public int ileFigur()
+        {
+            return Figury.Count;
+        }
+
         /// <summary>
         /// przestaw figure.
         /// </summary>

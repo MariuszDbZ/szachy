@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Atrybuty\Enums.cs" />
+    <Compile Include="Atrybuty\Rozszerzenia.cs" />
     <Compile Include="Figury\Figura.cs" />
     <Compile Include="Figury\Skoczek.cs" />
     <Compile Include="Figury\Krol.cs" />

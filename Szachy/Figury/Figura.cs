@@ -1,7 +1,10 @@
-﻿using Szachy.Atrybuty;
+﻿using System;
+using Szachy.Atrybuty;
 
 namespace Szachy.Figury
 {
+    public delegate void PozycjaZmienionaEventHandler(Pozycja obecnaPozycja);
+
     /// <summary>
     /// figura.
     /// </summary>
@@ -37,7 +40,11 @@ namespace Szachy.Figury
         public Pozycja Pozycja
         {
             get { return pozycja; }
-            set { pozycja = value; }
+            set
+            {
+                PozycjaZmieniona(pozycja); 
+                pozycja = value; 
+            }
         }
 
         /// <summary>
@@ -66,6 +73,8 @@ namespace Szachy.Figury
             this.nazwa = nazwa;
             this.pozycja = pozycja;
             this.kolor = kolor;
+            PozycjaZmieniona = ZmianaPola;
+            PozycjaZmieniona += BylRuch;
         }
 
         /// <summary>
@@ -89,5 +98,26 @@ namespace Szachy.Figury
         {
             return nazwa + " " + kolor + " " + pozycja.X + "," + pozycja.Y;
         }
+
+        /// <summary>
+        /// zmiana pola.
+        /// </summary>
+        private void ZmianaPola(Pozycja obecnaPozycja)
+        {
+            Console.WriteLine("Zdarzenie 1. Nowa pozycja to: {0} {1}", obecnaPozycja.X, obecnaPozycja.Y);
+        }
+
+        /// <summary>
+        /// byl ruch.
+        /// </summary>
+        private void BylRuch(Pozycja obecnaPozycja)
+        {
+            Console.WriteLine("Zdarzenie 2. Nastapil ruch");
+        }
+
+        /// <summary>
+        /// PozycjaZmieniona delegat.
+        /// </summary>
+        public event PozycjaZmienionaEventHandler PozycjaZmieniona;
     }
 }
